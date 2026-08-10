@@ -1,5 +1,5 @@
 import { NestFactory } from "@nestjs/core"
-import { Transport, type MicroserviceOptions } from "@nestjs/microservices"
+import { type MicroserviceOptions, Transport } from "@nestjs/microservices"
 
 import { AppModule } from "./app.module"
 
