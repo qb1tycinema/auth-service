@@ -1,8 +1,8 @@
 import {
 	Injectable,
 	Logger,
-	OnModuleDestroy,
-	OnModuleInit
+ 	type OnModuleDestroy,
+	type OnModuleInit
 } from "@nestjs/common"
 import { ConfigService } from "@nestjs/config"
 import { PrismaClient } from "@orm/generated/client"
@@ -30,7 +30,7 @@ export class PrismaService
 	public async onModuleInit() {
 		const start = Date.now()
 
-		this.logger.log("Connecting to Database...")
+		this.logger.log("Connecting to Database")
 
 		try {
 			await this.$connect()
