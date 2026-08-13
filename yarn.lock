@@ -1285,10 +1285,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.2.tgz#78d476333d85d5b1c792e257bca74ba080da49a4"
   integrity sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==
 
-"@qb1tycinema/contracts@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.0.1.tgz#cbe1f07c66f03628d83aa516c5985eedcab775dd"
-  integrity sha512-MUeKBKyXFHWdwlh0IInp4JjgrnrAcjIuMsMr8C/lENroJOh0KO9ZHTYhqMuTYcs4Ywp4y+QIkr1aBko8xy3J8w==
+"@qb1tycinema/contracts@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.0.2.tgz#50d531a0edffe415e267c65304c76a4d02689d5c"
+  integrity sha512-xSSym9WbILwR66BL4II5x6GQyMb7dlaWF7j9e9KZNRNsjspPRyGcnAG5GSD9IKirtmNR10mqezSKhFYS0I1hfw==
   dependencies:
     "@nestjs/microservices" "^11.1.28"
     rxjs "^7.8.2"
@@ -4884,6 +4884,11 @@ parseurl@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
+
+patcode@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/patcode/-/patcode-1.0.1.tgz#58a4b023c5ca2af16ce2f5dbec41604e0eef7c76"
+  integrity sha512-+KVlviqfGqMKvW2dHucIrYttm9Ndj9KmJWf66doTku7uKKVbjSU5BQtPMQF/HFpjSnz3WLOQwqXwymWHoTvqfg==
 
 path-exists@^4.0.0:
   version "4.0.0"

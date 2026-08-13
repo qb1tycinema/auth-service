@@ -30,9 +30,10 @@
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/adapter-pg": "^7.9.1",
     "@prisma/client": "^7.9.1",
-    "@qb1tycinema/contracts": "^1.0.1",
+    "@qb1tycinema/contracts": "^1.0.2",
     "@qb1tycinema/core": "^1.0.3",
     "ioredis": "^6.0.0",
+    "patcode": "^1.0.1",
     "prisma": "^7.9.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
