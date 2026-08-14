@@ -28,6 +28,7 @@
     "strict": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
+    "strictNullChecks": false,
     "noFallthroughCasesInSwitch": false,
 
     "skipLibCheck": true,
