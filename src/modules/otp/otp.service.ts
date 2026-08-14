@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common"
 import { RpcException } from "@nestjs/microservices"
+import { RpcStatus } from "@qb1tycinema/common"
 import { createHash } from "node:crypto"
 import { generateCode as generate } from "patcode"
 
@@ -25,13 +26,19 @@ export class OtpService {
 		const storedHash = await this.redis.get(`otp:${type}:${identifier}`)
 
 		if (!storedHash) {
-			throw new RpcException("Invalid or expired code")
+			throw new RpcException({
+				code: RpcStatus.NOT_FOUND,
+				details: "Invalid or expired code"
+			})
 		}
 
 		const incomingHash = createHash("sha256").update(code).digest("hex")
 
 		if (storedHash !== incomingHash) {
-			throw new RpcException("Invalid or expired code")
+			throw new RpcException({
+				code: RpcStatus.NOT_FOUND,
+				details: "Invalid or expired code"
+			})
 		}
 
 		await this.redis.del(`otp:${type}:${identifier}`)
