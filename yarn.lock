@@ -1285,10 +1285,15 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.2.tgz#78d476333d85d5b1c792e257bca74ba080da49a4"
   integrity sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==
 
-"@qb1tycinema/contracts@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.0.2.tgz#50d531a0edffe415e267c65304c76a4d02689d5c"
-  integrity sha512-xSSym9WbILwR66BL4II5x6GQyMb7dlaWF7j9e9KZNRNsjspPRyGcnAG5GSD9IKirtmNR10mqezSKhFYS0I1hfw==
+"@qb1tycinema/common@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/common/-/common-1.0.0.tgz#e0ac5b23698bb47c65c00dab373b0cb6be477d0c"
+  integrity sha512-4aWvz0wpGwgbmtHAAYaJQcSz1a54pDh8+J3GdmWRZC1nLE4Y7Jx4+PRy31/TTyVRNICg+KtzQYlUJuC4dX306Q==
+
+"@qb1tycinema/contracts@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.0.5.tgz#a99c632fc2eb6c5040257e9ba8ff39374b372146"
+  integrity sha512-ui/YEI5eXkOwA9H2mhdD0LXe65nNBtK3wxousFIhWfiefl/zKqKe8IEh2LIzbIkiqccalXwlsE+izvL4vpQBLg==
   dependencies:
     "@nestjs/microservices" "^11.1.28"
     rxjs "^7.8.2"
@@ -1726,6 +1731,11 @@
   dependencies:
     "@types/methods" "^1.1.4"
     "@types/superagent" "^8.1.0"
+
+"@types/validator@^13.15.3":
+  version "13.15.10"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.15.10.tgz#742b77ec34d58554b94a76a14cef30d59e3c16b9"
+  integrity sha512-T8L6i7wCuyoK8A/ZeLYt1+q0ty3Zb9+qbSSvrIVitzT3YjZqkTZ40IbRsPanlB4h1QB3JVL1SYCdR6ngtFYcuA==
 
 "@types/yargs-parser@*":
   version "21.0.3"
@@ -2646,6 +2656,20 @@ cjs-module-lexer@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-2.2.0.tgz#b3ca5101843389259ade7d88c77bd06ce55849ca"
   integrity sha512-4bHTS2YuzUvtoLjdy+98ykbNB5jS0+07EvFNXerqZQJ89F7DI6ET7OQo/HJuW6K0aVsKA9hj9/RVb2kQVOrPDQ==
+
+class-transformer@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/class-transformer/-/class-transformer-0.5.1.tgz#24147d5dffd2a6cea930a3250a677addf96ab336"
+  integrity sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==
+
+class-validator@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/class-validator/-/class-validator-0.15.1.tgz#002600c101bcebb16e7240870cb50535340c9600"
+  integrity sha512-LqoS80HBBSCVhz/3KloUly0ovokxpdOLR++Al3J3+dHXWt9sTKlKd4eYtoxhxyUjoe5+UcIM+5k9MIxyBWnRTw==
+  dependencies:
+    "@types/validator" "^13.15.3"
+    libphonenumber-js "^1.11.1"
+    validator "^13.15.22"
 
 classnames@^2.3.1:
   version "2.5.1"
@@ -4437,6 +4461,11 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
+libphonenumber-js@^1.11.1:
+  version "1.13.10"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.13.10.tgz#bb53bb92e8375b0af6e42a679a86ff3f4585a74b"
+  integrity sha512-xJxrdqvbl2rtn2MaUJrUejz8J7/uZNC0V77oks2LxYrO/+ZtVpRmz+fEQMuu6VusnEB1fmpByiLS1WXecOnAnw==
+
 lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
@@ -5973,6 +6002,11 @@ valibot@1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/valibot/-/valibot-1.4.2.tgz#da857781187f170aeaf4498d463d25028615b0d6"
   integrity sha512-gjdCvJ6d3RyHAneqxMYMW9QMCwYMb3jpOO0IyHZV1bnRHFBHrX3VkIILt5XYR0WhwHiH7Mty8ovuPZ/O3gamrg==
+
+validator@^13.15.22:
+  version "13.15.35"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-13.15.35.tgz#81cf455c51f15b69d8d340be5914f3fab00dbf7f"
+  integrity sha512-TQ5pAGhd5whStmqWvYF4OjQROlmv9SMFVt37qoCBdqRffuuklWYQlCNnEs2ZaIBD1kZRNnikiZOS1eqgkar0iw==
 
 vary@^1, vary@^1.1.2:
   version "1.1.2"
