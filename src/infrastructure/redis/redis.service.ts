@@ -7,6 +7,8 @@ import {
 import { ConfigService } from "@nestjs/config"
 import Redis from "ioredis"
 
+import type { AllConfigs } from "@/config"
+
 @Injectable()
 export class RedisService
 	extends Redis
@@ -14,12 +16,14 @@ export class RedisService
 {
 	private readonly logger = new Logger(RedisService.name)
 
-	public constructor(private readonly configService: ConfigService) {
+	public constructor(
+		private readonly configService: ConfigService<AllConfigs>
+	) {
 		super({
-			username: configService.getOrThrow<string>("REDIS_USER"),
-			password: configService.getOrThrow<string>("REDIS_PASSWORD"),
-			host: configService.getOrThrow<string>("REDIS_HOST"),
-			port: configService.getOrThrow<number>("REDIS_PORT"),
+			username: configService.get("redis.user", { infer: true }),
+			password: configService.get("redis.password", { infer: true }),
+			host: configService.get("redis.host", { infer: true }),
+			port: configService.get("redis.port", { infer: true }),
 			maxRetriesPerRequest: 5,
 			enableOfflineQueue: true
 		})
