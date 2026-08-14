@@ -1,6 +1,7 @@
-import { Injectable, NotFoundException } from "@nestjs/common"
+import { Injectable } from "@nestjs/common"
 import { RpcException } from "@nestjs/microservices"
 import type { Account } from "@orm/generated/client"
+import { RpcStatus } from "@qb1tycinema/common"
 import type {
 	SendOtpRequest,
 	SendOtpResponse,
@@ -67,7 +68,10 @@ export class AuthService {
 		}
 
 		if (!account) {
-			throw new RpcException("Account not found")
+			throw new RpcException({
+				code: RpcStatus.NOT_FOUND,
+				details: "Account not found"
+			})
 		}
 
 		if (type === "phone" && !account.isPhoneVerified) {
