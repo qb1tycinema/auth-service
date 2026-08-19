@@ -1312,10 +1312,10 @@
   resolved "https://registry.yarnpkg.com/@qb1tycinema/common/-/common-1.0.0.tgz#e0ac5b23698bb47c65c00dab373b0cb6be477d0c"
   integrity sha512-4aWvz0wpGwgbmtHAAYaJQcSz1a54pDh8+J3GdmWRZC1nLE4Y7Jx4+PRy31/TTyVRNICg+KtzQYlUJuC4dX306Q==
 
-"@qb1tycinema/contracts@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.0.5.tgz#a99c632fc2eb6c5040257e9ba8ff39374b372146"
-  integrity sha512-ui/YEI5eXkOwA9H2mhdD0LXe65nNBtK3wxousFIhWfiefl/zKqKe8IEh2LIzbIkiqccalXwlsE+izvL4vpQBLg==
+"@qb1tycinema/contracts@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.0.6.tgz#084e66494ba6935c7e56e5c0185550de0e6a873b"
+  integrity sha512-fLLEfONuqj7NrTi3pKz4QebGN3DOgGwY6OsXdMsEAw5WJDrInHXhZ4OomlW9gEH/VSpjVihljSuU3ti970fhAw==
   dependencies:
     "@nestjs/microservices" "^11.1.28"
     rxjs "^7.8.2"
