@@ -109,7 +109,8 @@ export class AuthService {
 	public async refresh(data: RefreshRequest): Promise<RefreshResponse> {
 		const { refreshToken } = data
 
-		const { valid, reason, userId } = this.passportService.verify(refreshToken)
+		const { valid, reason, userId } =
+			this.passportService.verify(refreshToken)
 
 		if (!valid) {
 			throw new RpcException({
