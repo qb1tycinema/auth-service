@@ -8,6 +8,7 @@ import { AuthController } from "./auth.controller"
 import { AuthRepository } from "./auth.repository"
 import { AuthService } from "./auth.service"
 import { getPassportConfig } from "@/config/loaders"
+import { UserRepository } from "@/shared/repositories"
 
 @Module({
 	imports: [
@@ -17,6 +18,6 @@ import { getPassportConfig } from "@/config/loaders"
 		})
 	],
 	controllers: [AuthController],
-	providers: [AuthService, AuthRepository, OtpService]
+	providers: [AuthService, AuthRepository, UserRepository, OtpService]
 })
 export class AuthModule {}
