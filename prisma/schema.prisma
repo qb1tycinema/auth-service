@@ -19,6 +19,8 @@ model Account {
 
   role Role @default(USER)
 
+  telegramId String? @unique @map("telegram_id")
+
   pendingContactChanges PendingContactChange[]
 
   createdAt DateTime @default(now()) @map("created_at")
