@@ -55,6 +55,16 @@ export class TelegramService {
 			})
 		}
 
+		const authDate = parseInt(data.query.auth_date, 10)
+		const now = Math.floor(Date.now() / 1000)
+
+		if (now - authDate > 300) {
+			throw new RpcException({
+                code: RpcStatus.UNAUTHENTICATED,
+                details: "Telegram authentication data has expired"
+            })
+		}
+
 		const telegramId = String(data.query.id)
 
 		const account =
@@ -100,7 +110,7 @@ export class TelegramService {
 
 		const secretKey = createHash("sha256")
 			.update(`${this.BOT_ID}:${this.BOT_TOKEN}`)
-			.digest("hex")
+			.digest()
 
 		const hmac = createHmac("sha256", secretKey)
 			.update(dataCheckString)
