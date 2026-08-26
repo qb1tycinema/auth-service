@@ -14,13 +14,11 @@ import type {
 import { OtpService } from "../otp/otp.service"
 import { TokenService } from "../token/token.service"
 
-import { AuthRepository } from "./auth.repository"
 import { UserRepository } from "@/shared/repositories"
 
 @Injectable()
 export class AuthService {
 	public constructor(
-		private readonly authRepository: AuthRepository,
 		private readonly userRepository: UserRepository,
 		private readonly otpService: OtpService,
 		private readonly tokenService: TokenService
@@ -38,7 +36,7 @@ export class AuthService {
 		}
 
 		if (!account) {
-			account = await this.authRepository.createAccount({
+			account = await this.userRepository.createAccount({
 				email: type === "email" ? identifier : undefined,
 				phone: type === "phone" ? identifier : undefined
 			})
