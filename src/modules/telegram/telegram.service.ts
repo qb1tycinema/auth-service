@@ -112,7 +112,7 @@ export class TelegramService {
 
 		const correctPhone = phone.startsWith("+") ? phone : `+${phone}`
 
-		const user = await this.userRepository.findByPhone(correctPhone)
+		let user = await this.userRepository.findByPhone(correctPhone)
 
 		if (!user) {
 			await this.userRepository.createAccount({ phone: correctPhone })
