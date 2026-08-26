@@ -115,7 +115,7 @@ export class TelegramService {
 		let user = await this.userRepository.findByPhone(correctPhone)
 
 		if (!user) {
-			await this.userRepository.createAccount({ phone: correctPhone })
+			user = await this.userRepository.createAccount({ phone: correctPhone })
 		}
 
 		await this.userRepository.update(user.id, {
