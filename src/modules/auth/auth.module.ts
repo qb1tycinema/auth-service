@@ -9,11 +9,6 @@ import { UserRepository } from "@/shared/repositories"
 
 @Module({
 	controllers: [AuthController],
-	providers: [
-		AuthService,
-		UserRepository,
-		OtpService,
-		TokenService
-	]
+	providers: [AuthService, UserRepository, OtpService, TokenService]
 })
 export class AuthModule {}
