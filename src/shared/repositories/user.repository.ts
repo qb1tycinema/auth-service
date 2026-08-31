@@ -1,6 +1,9 @@
 import { Injectable } from "@nestjs/common"
 import type { Account } from "@orm/generated/client"
-import type { AccountCreateInput, AccountUpdateInput } from "@orm/generated/models"
+import type {
+	AccountCreateInput,
+	AccountUpdateInput
+} from "@orm/generated/models"
 
 import { PrismaService } from "@/infrastructure/prisma/prisma.service"
 
