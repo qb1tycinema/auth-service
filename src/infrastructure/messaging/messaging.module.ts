@@ -1,9 +1,9 @@
 import { Global, Module } from "@nestjs/common"
+import { ConfigService } from "@nestjs/config"
 import { ClientsModule } from "@nestjs/microservices"
 
 import { MessagingService } from "./messaging.service"
 import { getRmqConfig } from "@/config/loaders"
-import { ConfigService } from "@nestjs/config"
 
 @Global()
 @Module({
