@@ -1,7 +1,9 @@
 import { Global, Module } from "@nestjs/common"
-import { ClientsModule, Transport } from "@nestjs/microservices"
+import { ClientsModule } from "@nestjs/microservices"
 
 import { MessagingService } from "./messaging.service"
+import { getRmqConfig } from "@/config/loaders"
+import { ConfigService } from "@nestjs/config"
 
 @Global()
 @Module({
@@ -9,16 +11,8 @@ import { MessagingService } from "./messaging.service"
 		ClientsModule.registerAsync([
 			{
 				name: "NOTIFICATIONS_CLIENT",
-				useFactory: () => ({
-					transport: Transport.RMQ,
-					options: {
-						urls: ["amqp://guest:123456@localhost:5672"],
-						queue: "notifications_queue",
-						queueOptions: {
-							durable: true
-						}
-					}
-				})
+				useFactory: getRmqConfig,
+				inject: [ConfigService]
 			}
 		])
 	],
