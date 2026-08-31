@@ -1,4 +1,4 @@
 export interface RmqConfig {
-    rmqUrl: string
-    rmqNotificationsQueue: string
+	rmqUrl: string
+	rmqNotificationsQueue: string
 }
