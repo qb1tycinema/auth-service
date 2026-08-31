@@ -1,7 +1,12 @@
 import { Injectable } from "@nestjs/common"
 import { ConfigService } from "@nestjs/config"
 import { RpcException } from "@nestjs/microservices"
-import type { TelegramCompleteRequest, TelegramConsumeRequest, TelegramVerifyRequest } from "@qb1tycinema/contracts/gen/auth"
+import { RpcStatus } from "@qb1tycinema/common"
+import type {
+	TelegramCompleteRequest,
+	TelegramConsumeRequest,
+	TelegramVerifyRequest
+} from "@qb1tycinema/contracts/gen/auth"
 import { createHash, createHmac, randomBytes } from "crypto"
 
 import { TokenService } from "../token/token.service"
@@ -9,7 +14,6 @@ import { TokenService } from "../token/token.service"
 import { TelegramRepository } from "./telegram.repository"
 import type { AllConfigs } from "@/config"
 import { RedisService } from "@/infrastructure/redis/redis.service"
-import { RpcStatus } from "@qb1tycinema/common"
 import { UserRepository } from "@/shared/repositories"
 
 @Injectable()
@@ -24,7 +28,7 @@ export class TelegramService {
 		private readonly config: ConfigService<AllConfigs>,
 		private readonly telegramRepository: TelegramRepository,
 		private readonly userRepository: UserRepository,
-		private readonly tokenService: TokenService,
+		private readonly tokenService: TokenService
 	) {
 		this.BOT_ID = config.get("telegram.botId", { infer: true })
 		this.BOT_TOKEN = config.get("telegram.botToken", { infer: true })
@@ -62,9 +66,9 @@ export class TelegramService {
 
 		if (now - authDate > 300) {
 			throw new RpcException({
-                code: RpcStatus.UNAUTHENTICATED,
-                details: "Telegram authentication data has expired"
-            })
+				code: RpcStatus.UNAUTHENTICATED,
+				details: "Telegram authentication data has expired"
+			})
 		}
 
 		const telegramId = String(data.query.id)
@@ -77,7 +81,6 @@ export class TelegramService {
 		}
 
 		const sessionId = randomBytes(16).toString("hex")
-
 
 		await this.redisService.set(
 			`telegram_session:${sessionId}`,
@@ -115,7 +118,9 @@ export class TelegramService {
 		let user = await this.userRepository.findByPhone(correctPhone)
 
 		if (!user) {
-			user = await this.userRepository.createAccount({ phone: correctPhone })
+			user = await this.userRepository.createAccount({
+				phone: correctPhone
+			})
 		}
 
 		await this.userRepository.update(user.id, {
@@ -169,7 +174,7 @@ export class TelegramService {
 			.filter(key => key !== "hash")
 			.sort()
 			.map(key => `${key}=${query[key]}`)
-			
+
 		const dataCheckString = dataCheckArr.join("\n")
 
 		const secretKey = createHash("sha256")

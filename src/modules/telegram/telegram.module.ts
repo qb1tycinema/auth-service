@@ -9,6 +9,11 @@ import { UserRepository } from "@/shared/repositories"
 
 @Module({
 	controllers: [TelegramController],
-	providers: [TelegramService, TelegramRepository, TokenService, UserRepository]
+	providers: [
+		TelegramService,
+		TelegramRepository,
+		TokenService,
+		UserRepository
+	]
 })
 export class TelegramModule {}
