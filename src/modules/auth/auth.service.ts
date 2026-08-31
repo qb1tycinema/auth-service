@@ -14,6 +14,7 @@ import type {
 import { OtpService } from "../otp/otp.service"
 import { TokenService } from "../token/token.service"
 
+import { MessagingService } from "@/infrastructure/messaging/messaging.service"
 import { UserRepository } from "@/shared/repositories"
 
 @Injectable()
@@ -21,7 +22,8 @@ export class AuthService {
 	public constructor(
 		private readonly userRepository: UserRepository,
 		private readonly otpService: OtpService,
-		private readonly tokenService: TokenService
+		private readonly tokenService: TokenService,
+		private readonly messagingService: MessagingService
 	) {}
 
 	public async sendOtp(data: SendOtpRequest): Promise<SendOtpResponse> {
@@ -42,12 +44,12 @@ export class AuthService {
 			})
 		}
 
-		const code = await this.otpService.send(
+		const { code } = await this.otpService.send(
 			identifier,
 			type as "phone" | "email"
 		)
 
-		console.log(code)
+		await this.messagingService.otpRequested({ identifier, type, code })
 
 		return {
 			ok: true
