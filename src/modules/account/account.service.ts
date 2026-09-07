@@ -18,8 +18,8 @@ import {
 import { OtpService } from "../otp/otp.service"
 
 import { AccountRepository } from "./account.repository"
-import { UserRepository } from "@/shared/repositories"
 import { MessagingService } from "@/infrastructure/messaging/messaging.service"
+import { UserRepository } from "@/shared/repositories"
 
 @Injectable()
 export class AccountService {

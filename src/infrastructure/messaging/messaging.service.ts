@@ -1,6 +1,10 @@
 import { Inject, Injectable } from "@nestjs/common"
 import { ClientProxy } from "@nestjs/microservices"
-import type { EmailChangeEvent, OtpRequestedEvent, PhoneChangeEvent } from "@qb1tycinema/contracts"
+import type {
+	EmailChangeEvent,
+	OtpRequestedEvent,
+	PhoneChangeEvent
+} from "@qb1tycinema/contracts"
 
 @Injectable()
 export class MessagingService {
