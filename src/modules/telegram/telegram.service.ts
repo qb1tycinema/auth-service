@@ -15,6 +15,7 @@ import { TelegramRepository } from "./telegram.repository"
 import type { AllConfigs } from "@/config"
 import { RedisService } from "@/infrastructure/redis/redis.service"
 import { UserRepository } from "@/shared/repositories"
+import { UsersClientGrpc } from "../users/users.grpc"
 
 @Injectable()
 export class TelegramService {
@@ -28,6 +29,7 @@ export class TelegramService {
 		private readonly config: ConfigService<AllConfigs>,
 		private readonly telegramRepository: TelegramRepository,
 		private readonly userRepository: UserRepository,
+		private readonly usersClient: UsersClientGrpc,
 		private readonly tokenService: TokenService
 	) {
 		this.BOT_ID = config.get("telegram.botId", { infer: true })
@@ -79,6 +81,8 @@ export class TelegramService {
 		if (account && account.phone) {
 			return this.tokenService.generate(account.id)
 		}
+
+		this.usersClient.create({ id: account.id })
 
 		const sessionId = randomBytes(16).toString("hex")
 
