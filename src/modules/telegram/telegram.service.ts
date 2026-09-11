@@ -82,7 +82,7 @@ export class TelegramService {
 			return this.tokenService.generate(account.id)
 		}
 
-		this.usersClient.create({ id: account.id })
+		this.usersClient.create({ id: account.id }).subscribe()
 
 		const sessionId = randomBytes(16).toString("hex")
 

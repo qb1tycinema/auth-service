@@ -17,6 +17,7 @@ import { TokenService } from "../token/token.service"
 import { MessagingService } from "@/infrastructure/messaging/messaging.service"
 import { UserRepository } from "@/shared/repositories"
 import { UsersClientGrpc } from "../users/users.grpc"
+import { lastValueFrom } from "rxjs"
 
 @Injectable()
 export class AuthService {
@@ -50,6 +51,8 @@ export class AuthService {
 			identifier,
 			type as "phone" | "email"
 		)
+
+		console.log(code)
 
 		await this.messagingService.otpRequested({ identifier, type, code })
 
@@ -94,7 +97,7 @@ export class AuthService {
 			})
 		}
 
-		this.usersClient.create({ id: account.id })
+		this.usersClient.create({ id: account.id }).subscribe()
 
 		return this.tokenService.generate(account.id)
 	}

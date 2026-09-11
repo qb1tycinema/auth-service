@@ -23,6 +23,7 @@ import type { AllConfigs } from "@/config"
 			}
 		])
 	],
-	providers: [UsersClientGrpc]
+	providers: [UsersClientGrpc],
+	exports: [UsersClientGrpc]
 })
 export class UsersModule {}
