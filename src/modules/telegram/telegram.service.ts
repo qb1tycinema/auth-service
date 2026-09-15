@@ -10,12 +10,12 @@ import type {
 import { createHash, createHmac, randomBytes } from "crypto"
 
 import { TokenService } from "../token/token.service"
+import { UsersClientGrpc } from "../users/users.grpc"
 
 import { TelegramRepository } from "./telegram.repository"
 import type { AllConfigs } from "@/config"
 import { RedisService } from "@/infrastructure/redis/redis.service"
 import { UserRepository } from "@/shared/repositories"
-import { UsersClientGrpc } from "../users/users.grpc"
 
 @Injectable()
 export class TelegramService {
