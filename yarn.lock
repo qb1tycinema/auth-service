@@ -1307,15 +1307,15 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.2.tgz#78d476333d85d5b1c792e257bca74ba080da49a4"
   integrity sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==
 
-"@qb1tycinema/common@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@qb1tycinema/common/-/common-1.0.1.tgz#a2f39979f5cdf0c431f8a5f78365dddcd0b8f64d"
-  integrity sha512-6WqGBWeu0o29S5YX3qCt6nx20u4A0eVbo+hdMRusA+EnPIqzgN/Amp6W2p8ezm9Ev+HTRcO0iqoWZFW3G8ZcKA==
+"@qb1tycinema/common@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/common/-/common-1.2.1.tgz#35a17f2f07494be29df568a795235a38d667b6a6"
+  integrity sha512-YNrJcG15Ze4Co8SSUQPDO01ULMXulwVu+U6kUFPfB+HGgjI/fNzKbsCyuhFVJeXTA6pBATJ8naK2ya/A2arlhA==
 
-"@qb1tycinema/contracts@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.2.6.tgz#83da33e295b37799a38e5597340a00fac74ad2bb"
-  integrity sha512-Kp6KZVQPXUvvjJmTbq8wiMdxWB5/nntWmmvakXLvCU5UIyYkEs9/CI6TL4tPvikEQvqW3wl/U5BLtLWE37MTxQ==
+"@qb1tycinema/contracts@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.2.7.tgz#a4679f38dff885c23a0fc9048b3c96b8296edc6f"
+  integrity sha512-mnIymQaoMBMJwtlN93qv3LKCrYYw0qKOrdMSkGw+uCGi941oEpYDufYY4+Pb5VsNdLeE1nFE1qul1QZh0hzwXw==
 
 "@qb1tycinema/core@^1.0.3":
   version "1.0.3"
