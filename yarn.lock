@@ -1312,10 +1312,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.2.tgz#78d476333d85d5b1c792e257bca74ba080da49a4"
   integrity sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==
 
-"@qb1tycinema/common@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@qb1tycinema/common/-/common-1.2.1.tgz#35a17f2f07494be29df568a795235a38d667b6a6"
-  integrity sha512-YNrJcG15Ze4Co8SSUQPDO01ULMXulwVu+U6kUFPfB+HGgjI/fNzKbsCyuhFVJeXTA6pBATJ8naK2ya/A2arlhA==
+"@qb1tycinema/common@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/common/-/common-1.2.2.tgz#2e7b0aef2e8a7aaa41de0893d6af3bf7d0db00a5"
+  integrity sha512-JalsXY2Johph6qwryljcldOFAchQ6h6dcMPyfzW3NTRzM+OZEQw55+xCnBihsALzyJsBINGfLdgMgAAWwebs9A==
 
 "@qb1tycinema/contracts@^1.2.7":
   version "1.2.7"
