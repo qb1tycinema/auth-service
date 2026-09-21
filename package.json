@@ -34,6 +34,7 @@
     "@qb1tycinema/contracts": "^1.2.7",
     "@qb1tycinema/core": "^1.0.3",
     "@qb1tycinema/passport": "^1.0.0",
+    "@willsoto/nestjs-prometheus": "^6.1.1",
     "amqp-connection-manager": "^5.0.0",
     "amqplib": "^2.0.1",
     "class-transformer": "^0.5.1",
