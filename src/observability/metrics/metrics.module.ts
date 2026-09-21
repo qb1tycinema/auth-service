@@ -29,7 +29,6 @@ import { GrpcMetricsInterceptor } from "./grpc-metrics.interceptor"
 			help: "Total gRPC requests",
 			labelNames: ["service", "method", "status"]
 		}),
-		GrpcMetricsInterceptor,
 		{
 			provide: APP_INTERCEPTOR,
 			useClass: GrpcMetricsInterceptor
