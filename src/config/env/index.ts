@@ -1,5 +1,6 @@
 export * from "./database.env"
 export * from "./grpc.env"
+export * from "./jaeger.env"
 export * from "./passport.env"
 export * from "./redis.env"
 export * from "./rmq.env"
