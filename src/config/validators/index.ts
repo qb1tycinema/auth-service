@@ -1,5 +1,6 @@
 export * from "./database.validator"
 export * from "./grpc.validator"
+export * from "./jaeger.validator"
 export * from "./passport.validator"
 export * from "./redis.validator"
 export * from "./rmq.validator"
