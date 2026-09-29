@@ -4,6 +4,7 @@ import { ConfigModule } from "@nestjs/config"
 import {
 	databaseEnv,
 	grpcEnv,
+	jaegerEnv,
 	passportEnv,
 	redisEnv,
 	rmqEnv,
@@ -32,6 +33,7 @@ import { ObservabilityModule } from "./observability/observability.module"
 			load: [
 				databaseEnv,
 				grpcEnv,
+				jaegerEnv,
 				passportEnv,
 				redisEnv,
 				rmqEnv,
