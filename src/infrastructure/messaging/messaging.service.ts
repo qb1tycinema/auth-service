@@ -1,5 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common"
-import { ClientProxy } from "@nestjs/microservices"
+import { ClientProxy, RmqRecordBuilder } from "@nestjs/microservices"
+import { context, propagation } from "@opentelemetry/api"
 import type {
 	EmailChangeEvent,
 	OtpRequestedEvent,
@@ -13,14 +14,25 @@ export class MessagingService {
 	) {}
 
 	public async otpRequested(data: OtpRequestedEvent) {
-		return this.client.emit("auth.otp.requested", data)
+		return this.emitWithTrace("auth.otp.requested", data)
 	}
 
 	public async phoneChange(data: PhoneChangeEvent) {
-		return this.client.emit("account.phone.change", data)
+		return this.emitWithTrace("account.phone.change", data)
 	}
 
 	public async emailChange(data: EmailChangeEvent) {
-		return this.client.emit("account.email.change", data)
+		return this.emitWithTrace("account.email.change", data)
+	}
+
+	private emitWithTrace<T>(pattern: string, data: T) {
+		const headers = {}
+		propagation.inject(context.active(), headers)
+
+		const record = new RmqRecordBuilder(data)
+			.setOptions({ headers })
+			.build()
+
+		return this.client.emit(pattern, record)
 	}
 }
