@@ -2077,10 +2077,10 @@
   resolved "https://registry.yarnpkg.com/@qb1tycinema/contracts/-/contracts-1.2.7.tgz#a4679f38dff885c23a0fc9048b3c96b8296edc6f"
   integrity sha512-mnIymQaoMBMJwtlN93qv3LKCrYYw0qKOrdMSkGw+uCGi941oEpYDufYY4+Pb5VsNdLeE1nFE1qul1QZh0hzwXw==
 
-"@qb1tycinema/core@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@qb1tycinema/core/-/core-1.0.3.tgz#7e9c1768bfe2677379a62c9e7cd8d0c42b19928e"
-  integrity sha512-wtYhaOSa1U8jqKPSWTeeBY7YDnmCHUY3l4NF1UzLH1pvQpqCYxxTcPjMtLu4ws3NAeRhdupdTsujozjbZGPlpw==
+"@qb1tycinema/core@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@qb1tycinema/core/-/core-1.0.4.tgz#de4e97c523789d073877ea212386f33851d682b1"
+  integrity sha512-TDN0G8mhvj1wniti5AyVxV35KPSg+5VhYo6ppYkg7gRkjshHI04oAw8CemzYDAPfMs2MLSQ5KThh0AgDpw8hyw==
   dependencies:
     "@trivago/prettier-plugin-sort-imports" "^6.0.2"
 
