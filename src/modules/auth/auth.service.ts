@@ -10,7 +10,6 @@ import type {
 	VerifyOtpRequest,
 	VerifyOtpResponse
 } from "@qb1tycinema/contracts/gen/auth"
-import { lastValueFrom } from "rxjs"
 
 import { OtpService } from "../otp/otp.service"
 import { TokenService } from "../token/token.service"
