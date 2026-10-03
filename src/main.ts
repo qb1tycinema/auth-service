@@ -1,10 +1,11 @@
+import "@/observability/tracing"
+
 import { ConfigService } from "@nestjs/config"
 import { NestFactory } from "@nestjs/core"
 
 import { AppModule } from "./app.module"
 import type { AllConfigs } from "./config"
 import { createGrpcServer } from "./infrastructure/grpc"
-import "@/observability/tracing"
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule)
