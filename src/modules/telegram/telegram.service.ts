@@ -8,6 +8,7 @@ import type {
 	TelegramVerifyRequest
 } from "@qb1tycinema/contracts/gen/auth"
 import { createHash, createHmac, randomBytes } from "crypto"
+import { PinoLogger } from "nestjs-pino"
 
 import { TokenService } from "../token/token.service"
 import { UsersClientGrpc } from "../users/users.grpc"
@@ -25,6 +26,7 @@ export class TelegramService {
 	private readonly REDIRECT_ORIGIN: string
 
 	public constructor(
+		private readonly logger: PinoLogger,
 		private readonly redisService: RedisService,
 		private readonly config: ConfigService<AllConfigs>,
 		private readonly telegramRepository: TelegramRepository,
@@ -32,6 +34,8 @@ export class TelegramService {
 		private readonly usersClient: UsersClientGrpc,
 		private readonly tokenService: TokenService
 	) {
+		this.logger.setContext(TelegramService.name)
+
 		this.BOT_ID = config.get("telegram.botId", { infer: true })
 		this.BOT_TOKEN = config.get("telegram.botToken", { infer: true })
 		this.BOT_USERNAME = config.get("telegram.botUsername", { infer: true })
@@ -41,6 +45,8 @@ export class TelegramService {
 	}
 
 	public getAuthUrl() {
+		this.logger.debug("Generating Telegram auth URL")
+
 		const url = new URL("https://oauth.telegram.org/auth")
 
 		url.searchParams.append("bot_id", this.BOT_ID)
@@ -54,9 +60,21 @@ export class TelegramService {
 	}
 
 	public async verify(data: TelegramVerifyRequest) {
+		const telegramId = String(data.query.id)
+
+		this.logger.info(
+			{ telegramId, username: data.query.username },
+			"Telegram verification attempt"
+		)
+
 		const isValid = this.checkTelegramAuth(data.query)
 
 		if (!isValid) {
+			this.logger.warn(
+				{ telegramId, username: data.query.username },
+				"Telegram verification failed: Invalid signature"
+			)
+
 			throw new RpcException({
 				code: RpcStatus.UNAUTHENTICATED,
 				details: "Invalid Telegram signature"
@@ -67,20 +85,33 @@ export class TelegramService {
 		const now = Math.floor(Date.now() / 1000)
 
 		if (now - authDate > 300) {
+			this.logger.warn(
+				{ telegramId, authDate, now },
+				"Telegram verification failed: Authentication data expired"
+			)
+
 			throw new RpcException({
 				code: RpcStatus.UNAUTHENTICATED,
 				details: "Telegram authentication data has expired"
 			})
 		}
 
-		const telegramId = String(data.query.id)
-
 		const account =
 			await this.telegramRepository.findByTelegramId(telegramId)
 
 		if (account && account.phone) {
+			this.logger.info(
+				{ telegramId, accountId: account.id },
+				"Telegram verification successful for existing account"
+			)
+
 			return this.tokenService.generate(account.id)
 		}
+
+		this.logger.info(
+			{ telegramId },
+			"Account incomplete or not found, initiating Telegram registration session"
+		)
 
 		this.usersClient.create({ id: account.id }).subscribe()
 
@@ -98,6 +129,8 @@ export class TelegramService {
 			300
 		)
 
+		this.logger.debug({ telegramId }, "Telegram session stored in Redis")
+
 		return {
 			url: `https://t.me/${this.BOT_USERNAME}?start=${sessionId}`
 		}
@@ -106,9 +139,16 @@ export class TelegramService {
 	public async complete(data: TelegramCompleteRequest) {
 		const { sessionId, phone } = data
 
+		this.logger.info({ phone }, "Completing Telegram registration")
+
 		const raw = await this.redisService.get(`telegram_session:${sessionId}`)
 
 		if (!raw) {
+			this.logger.warn(
+				{ phone },
+				"Telegram completion failed: Session not found or expired"
+			)
+
 			throw new RpcException({
 				code: RpcStatus.NOT_FOUND,
 				details: "Session not found or session expired"
@@ -122,6 +162,11 @@ export class TelegramService {
 		let user = await this.userRepository.findByPhone(correctPhone)
 
 		if (!user) {
+			this.logger.info(
+				{ phone: correctPhone, telegramId },
+				"Account not found by phone, creating new account"
+			)
+
 			user = await this.userRepository.createAccount({
 				phone: correctPhone
 			})
@@ -143,6 +188,11 @@ export class TelegramService {
 
 		await this.redisService.del(`telegram_session:${sessionId}`)
 
+		this.logger.info(
+			{ accountId: user.id, telegramId },
+			"Telegram registration completed successfully"
+		)
+
 		return {
 			sessionId
 		}
@@ -151,9 +201,15 @@ export class TelegramService {
 	public async consume(data: TelegramConsumeRequest) {
 		const { sessionId } = data
 
+		this.logger.debug("Attempting to consume Telegram tokens")
+
 		const raw = await this.redisService.get(`telegram_tokens:${sessionId}`)
 
 		if (!raw) {
+			this.logger.warn(
+				"Telegram token consumption failed: Session not found or expired"
+			)
+
 			throw new RpcException({
 				code: RpcStatus.NOT_FOUND,
 				details: "Session not found or session expired"
@@ -163,6 +219,8 @@ export class TelegramService {
 		const tokens = JSON.parse(raw)
 
 		await this.redisService.del(`telegram_tokens:${sessionId}`)
+
+		this.logger.info("Telegram tokens consumed successfully")
 
 		return tokens
 	}
