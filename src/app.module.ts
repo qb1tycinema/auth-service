@@ -1,15 +1,18 @@
 import { Module } from "@nestjs/common"
-import { ConfigModule } from "@nestjs/config"
+import { ConfigModule, ConfigService } from "@nestjs/config"
+import { LoggerModule } from "nestjs-pino"
 
 import {
 	databaseEnv,
 	grpcEnv,
 	jaegerEnv,
+	loggerEnv,
 	passportEnv,
 	redisEnv,
 	rmqEnv,
 	telegramEnv
 } from "./config"
+import { getPinoConfig } from "./config/loaders"
 import { MessagingModule } from "./infrastructure/messaging/messaging.module"
 import { PrismaModule } from "./infrastructure/prisma/prisma.module"
 import { RedisModule } from "./infrastructure/redis/redis.module"
@@ -34,11 +37,16 @@ import { ObservabilityModule } from "./observability/observability.module"
 				databaseEnv,
 				grpcEnv,
 				jaegerEnv,
+				loggerEnv,
 				passportEnv,
 				redisEnv,
 				rmqEnv,
 				telegramEnv
 			]
+		}),
+		LoggerModule.forRootAsync({
+			useFactory: getPinoConfig,
+			inject: [ConfigService]
 		}),
 		PrismaModule,
 		RedisModule,
