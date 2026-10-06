@@ -3,7 +3,7 @@ import { registerAs } from "@nestjs/config"
 import type { GrpcConfig } from "../interfaces/grpc.interface"
 import { GrpcValidator } from "../validators"
 
-import { validateEnv } from "@/shared/utils"
+import { validateEnv } from "@qb1tycinema/common"
 
 export const grpcEnv = registerAs<GrpcConfig>("grpc", () => {
 	validateEnv(process.env, GrpcValidator)

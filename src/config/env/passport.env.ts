@@ -2,7 +2,7 @@ import { registerAs } from "@nestjs/config"
 
 import { PassportValidator } from "../validators"
 
-import { validateEnv } from "@/shared/utils"
+import { validateEnv } from "@qb1tycinema/common"
 
 export const passportEnv = registerAs("passport", () => {
 	validateEnv(process.env, PassportValidator)

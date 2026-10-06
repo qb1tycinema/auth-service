@@ -2,7 +2,7 @@ import { registerAs } from "@nestjs/config"
 
 import { RmqValidator } from "../validators"
 
-import { validateEnv } from "@/shared/utils"
+import { validateEnv } from "@qb1tycinema/common"
 
 export const rmqEnv = registerAs("rmq", () => {
 	validateEnv(process.env, RmqValidator)
