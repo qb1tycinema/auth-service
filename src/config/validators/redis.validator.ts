@@ -14,4 +14,7 @@ export class RedisValidator {
 	@Min(1)
 	@Max(65535)
 	public REDIS_PORT!: number
+
+	@IsInt()
+	public REDIS_DB!: number
 }
